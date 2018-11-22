@@ -22,7 +22,7 @@
                         <a href="admin/theloai/danhsach">Danh Sách</a>
                     </li>
                     <li>
-                        <a href="admin/theloai/them">Thêm Thể Loại</a>
+                        <a href="admin/theloai/them">Thêm</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

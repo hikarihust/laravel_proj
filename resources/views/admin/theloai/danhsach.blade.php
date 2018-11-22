@@ -27,14 +27,20 @@
                         <th class="text-center">ID</th>
                         <th class="text-center">Tên Thể Loại</th>
                         <th class="text-center">Tên Không Dấu</th>
-                        <th class="text-center">Sửa</th>
-                        <th class="text-center">Xóa</th>
+                        <th class="text-center">Delete</th>
+                        <th class="text-center">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
-
-
-
+                    @foreach($theloai as $tl)
+                        <tr class="odd gradeX" align="center">
+                            <td>{{ $tl->id }}</td>
+                            <td>{{ $tl->Ten }}</td>
+                            <td>{{ $tl->TenKhongDau }}</td>
+                            <td class="center"><i class="fa fa-trash-o fa-fw"></i><a href="admin/theloai/xoa">Delete</a></td>
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i><a href="admin/theloai/sua/{{ $tl->id }}">Edit</a></td>
+                        </tr>
+                    @endforeach
 
 
 
