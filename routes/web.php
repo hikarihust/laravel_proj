@@ -23,3 +23,7 @@ Route::get('thu', function () {
     	echo $loaitin->Ten."<br>";
     }
 });
+
+Route::get('thuAdminView', function () {
+    return view('admin.theloai.sua');
+});
