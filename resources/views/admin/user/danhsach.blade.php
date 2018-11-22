@@ -1,7 +1,7 @@
 @extends('admin.layout.index')
 
 @section('content')
-<script src="admin_asset/dist/js/extra.js"></script>
+<script src="public/admin_asset/dist/js/extra.js"></script>
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
