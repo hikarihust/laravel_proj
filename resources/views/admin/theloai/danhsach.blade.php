@@ -32,9 +32,15 @@
                     </tr>
                 </thead>
                 <tbody>
-
-
-
+                    @foreach($theloai as $chitiet)
+                        <tr class="odd gradeX" align="center">
+                            <td>{{ $chitiet->id }}</td>
+                            <td>{{ $chitiet->Ten }}</td>
+                            <td>{{ $chitiet->TenKhongDau }}</td>
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i><a href="admin/theloai/sua/{{ $chitiet->id }}">Sửa</a></td>
+                            <td class="center"><i class="fa fa-trash-o fa-fw"></i><a href="admin/theloai/xoa">Xóa</a></td>
+                        </tr>
+                    @endforeach
 
 
 
