@@ -57,9 +57,15 @@ Route::group(['prefix' => 'admin'],function(){
 		// Route URL: admin/loaitin/danhsach
 		Route::get('danhsach','LoaiTinController@getDanhSach');
 
-		Route::get('sua','LoaiTinController@getSua');
+		Route::get('sua/{id}','LoaiTinController@getSua');
+
+		Route::post('sua/{id}','LoaiTinController@postSua');
 
 		Route::get('them','LoaiTinController@getThem');
+
+		Route::post('them','LoaiTinController@postThem');
+
+		Route::get('xoa/{id}','LoaiTinController@getXoa');
 
 	});
 

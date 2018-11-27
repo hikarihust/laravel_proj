@@ -16,10 +16,10 @@
                 <a href="admin"><i class="fa fa-dashboard fa-fw icon-mright"></i>Bảng Điều Khiển</a>
             </li>
             <li>
-                <a href="admin/theloai/danhsach"><i class="fa fa-list fa-fw icon-mright"></i>Thể Loại<span class="fa arrow"></span></a>
+                <a href="admin/theloai/danhsach"><i class="fa fa-list fa-fw icon-mright"></i>Thể loại<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="admin/theloai/danhsach">Danh Sách</a>
+                        <a href="admin/theloai/danhsach">Danh sách</a>
                     </li>
                     <li>
                         <a href="admin/theloai/them">Thêm </a>
@@ -29,52 +29,52 @@
             </li>
 
             <li>
-                <a href="admin/loaitin/danhsach"><i class="fa fa-tasks fa-fw icon-mright"></i>Loại Tin<span class="fa arrow"></span></a>
+                <a href="admin/loaitin/danhsach"><i class="fa fa-tasks fa-fw icon-mright"></i>Loại tin<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="admin/loaitin/danhsach">Danh Sách</a>
+                        <a href="admin/loaitin/danhsach">Danh sách</a>
                     </li>
                     <li>
-                        <a href="admin/loaitin/them">Thêm Loại Tin</a>
+                        <a href="admin/loaitin/them">Thêm</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
 
             <li>
-                <a href="admin/tintuc/danhsach"><i class="fa fa-newspaper-o fa-fw icon-mright"></i>Tin Tức<span class="fa arrow"></span></a>
+                <a href="admin/tintuc/danhsach"><i class="fa fa-newspaper-o fa-fw icon-mright"></i>Tin tức<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="admin/tintuc/danhsach">Danh Sách</a>
+                        <a href="admin/tintuc/danhsach">Danh sách</a>
                     </li>
                     <li>
-                        <a href="admin/tintuc/them">Thêm Tin Tức</a>
+                        <a href="admin/tintuc/them">Thêm</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
 
             <li>
-                <a href="admin/slide/danhsach"><i class="fa fa-slideshare fa-fw icon-mright"></i>Quản lý Slider<span class="fa arrow"></span></a>
+                <a href="admin/slide/danhsach"><i class="fa fa-slideshare fa-fw icon-mright"></i>Slider<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="admin/slide/danhsach">Danh Sách</a>
+                        <a href="admin/slide/danhsach">Danh sách</a>
                     </li>
                     <li>
-                        <a href="admin/slide/them">Thêm Slide</a>
+                        <a href="admin/slide/them">Thêm</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
 
             <li>
-                <a href="admin/user/danhsach" icon-mright"><i class="fa fa-users fa-fw icon-mright"></i>Quản lý Người Dùng<span class="fa arrow"></span></a>
+                <a href="admin/user/danhsach" icon-mright"><i class="fa fa-users fa-fw icon-mright"></i>User<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="admin/user/danhsach">Danh Sách</a>
+                        <a href="admin/user/danhsach">Danh sách</a>
                     </li>
                     <li>
-                        <a href="admin/user/them">Thêm User</a>
+                        <a href="admin/user/them">Thêm</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

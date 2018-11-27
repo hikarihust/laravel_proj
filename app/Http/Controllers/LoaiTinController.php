@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TheLoai;
 use App\Models\LoaiTin;
+use App\Models\TinTuc;
 
-class TheLoaiController extends Controller
+class LoaiTinController extends Controller
 {
 	public function getDanhSach(){
-		$theloai = TheLoai::all();
-		return view('admin.theloai.danhsach',['theloai'=>$theloai]);
+		$loaitin = LoaiTin::all();
+		return view('admin.loaitin.danhsach',['loaitin'=>$loaitin]);
 	}
 
 	public function getThem(){
@@ -61,10 +62,10 @@ class TheLoaiController extends Controller
 	}
 
 	public function getXoa($id){
-		$theloai = TheLoai::find($id);
-		$theloai->delete();
+		$loaitin = LoaiTin::find($id);
+		$loaitin->delete();
 
-		return redirect('admin/theloai/danhsach')->with('thongbao','Xóa Thể Loại thành công!');
+		return redirect('admin/loaitin/danhsach')->with('thongbao','Xóa Thể Loại thành công!');
 	}
 
 	private function changeTitle($str,$strSymbol='-',$case=MB_CASE_LOWER){// MB_CASE_UPPER / MB_CASE_TITLE / MB_CASE_LOWER
