@@ -15,50 +15,39 @@ class LoaiTinController extends Controller
 	}
 
 	public function getThem(){
-		return view('admin.theloai.them');
+		$theloai = TheLoai::all();
+		return view('admin.loaitin.them', ['theloai' => $theloai]);
 	}
 
 	public function postThem(Request $request){
 		$this->validate($request, 
 			[
-				'Ten' => 'required|unique:TheLoai,Ten|min:3|max:100'
+				'Ten'=>'required|unique:LoaiTin,Ten|min:3|max:100',
+				'TheLoai'=>'required'
 			], 
 			[
-				'Ten.required' => 'Bạn chưa nhập tên Thể Loại!',
-				'Ten.unique' => 'Tên Thể Loại đã tồn tại, vui lòng nhập lại!',
-				'Ten.min' => 'Tên Thể Loại gồm ít nhất 3 ký tự!',
-				'Ten.max' => 'Tên Thể Loại gồm tối đa 100 ký tự!'
+				'Ten.required'=>'Bạn chưa nhập tên Loại Tin!',
+				'Ten.unique'=>'Tên Loại Tin đã tồn tại, vui lòng nhập tên khác!',
+				'Ten.min'=>'Tên Loại Tin gồm ít nhất 3 ký tự!',
+				'Ten.max'=>'Tên Loại Tin gồm tối đa 100 ký tự!',
+				'TheLoai.required'=>'Vui lòng chọn Thể Loại!'
 			]);
-		$theloai = new TheLoai;
-		$theloai->Ten = $request->Ten;
-		$theloai->TenKhongDau = $this->changeTitle($request->Ten);
-		$theloai->save();
 
-		return redirect('admin/theloai/them')->with('thongbao','Đã thêm thành công!');
+		$loaitin = new LoaiTin;
+		$loaitin->Ten = $request->Ten;
+		$loaitin->TenKhongDau = $this->changeTitle($request->Ten);
+		$loaitin->idTheLoai = $request->TheLoai;
+		$loaitin->save();
+
+		return redirect('admin/loaitin/them')->with('thongbao','Thêm Loại Tin thành công!');
 	}
 
 	public function getSua($id){
-		$theloai = TheLoai::find($id);
-		return view('admin.theloai.sua', ['theloai' => $theloai]);
+
 	}
 
 	public function postSua(Request $request, $id){
-		$theloai = TheLoai::find($id);
-		$this->validate($request, 
-			[
-				'Ten' => 'required|unique:TheLoai,Ten|min:3|max:100'
-			], 
-			[
-				'Ten.required' => 'Bạn chưa nhập tên Thể Loại!',
-				'Ten.unique' => 'Tên Thể Loại đã tồn tại, vui lòng nhập lại!',
-				'Ten.min' => 'Tên Thể Loại gồm ít nhất 3 ký tự!',
-				'Ten.max' => 'Tên Thể Loại gồm tối đa 100 ký tự!'
-			]);
-		$theloai->Ten = $request->Ten;
-		$theloai->TenKhongDau = $this->changeTitle($request->Ten);
-		$theloai->save();
 
-		return redirect('admin/theloai/sua/'.$id)->with('thongbao','Sửa tên Thể Loại thành công');
 	}
 
 	public function getXoa($id){
