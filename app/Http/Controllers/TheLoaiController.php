@@ -20,10 +20,11 @@ class TheLoaiController extends Controller
 	public function postThem(Request $request){
 		$this->validate($request, 
 			[
-				'Ten' => 'required|min:3|max:100'
+				'Ten' => 'required|unique:TheLoai,Ten|min:3|max:100'
 			], 
 			[
 				'Ten.required' => 'Bạn chưa nhập tên Thể Loại!',
+				'Ten.unique' => 'Tên Thể Loại đã tồn tại, vui lòng nhập lại!',
 				'Ten.min' => 'Tên Thể Loại gồm ít nhất 3 ký tự!',
 				'Ten.max' => 'Tên Thể Loại gồm tối đa 100 ký tự!'
 			]);
@@ -35,9 +36,38 @@ class TheLoaiController extends Controller
 		return redirect('admin/theloai/them')->with('thongbao','Đã thêm thành công!');
 	}
 
-	public function getSua(){
-		return view('admin.theloai.sua');
+	public function getSua($id){
+		$theloai = TheLoai::find($id);
+		return view('admin.theloai.sua', ['theloai' => $theloai]);
 	}
+
+	public function postSua(Request $request, $id){
+		$theloai = TheLoai::find($id);
+		$this->validate($request, 
+			[
+				'Ten' => 'required|unique:TheLoai,Ten|min:3|max:100'
+			], 
+			[
+				'Ten.required' => 'Bạn chưa nhập tên Thể Loại!',
+				'Ten.unique' => 'Tên Thể Loại đã tồn tại, vui lòng nhập lại!',
+				'Ten.min' => 'Tên Thể Loại gồm ít nhất 3 ký tự!',
+				'Ten.max' => 'Tên Thể Loại gồm tối đa 100 ký tự!'
+			]);
+		$theloai->Ten = $request->Ten;
+		$theloai->TenKhongDau = $this->changeTitle($request->Ten);
+		$theloai->save();
+
+		return redirect('admin/theloai/sua/'.$id)->with('thongbao','Sửa tên Thể Loại thành công');
+	}
+
+	public function getXoa($id){
+		$theloai = TheLoai::find($id);
+		$theloai->Delete();
+
+		return redirect('admin/theloai/danhsach')->with('thongbao','Xóa Thể Loại thành công!');
+	}
+
+
 
 
 	private function changeTitle($str,$strSymbol='-',$case=MB_CASE_LOWER){// MB_CASE_UPPER / MB_CASE_TITLE / MB_CASE_LOWER
