@@ -5,8 +5,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Thể Loại
-                            <small>> Thêm</small>
+                        <h1 class="page-header">Tin tức
+                            <small> Thêm</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -29,6 +29,28 @@
                     @endif -->
                         <form action="admin/theloai/them" method="POST">
                             {{ csrf_field() }}
+
+
+                            <div class="form-group">
+                                <p><label>Thể Loại</label></p>
+                                <select class="form-control input-width" name="TheLoai">
+                                    @foreach($theloai as $tl)
+                                        <option value="{{ $tl->id }}">{{ $tl->Ten }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <p><label>Loại tin</label></p>
+                                <select class="form-control input-width" name="LoaiTin">
+                                    @foreach($loaitin as $lt)
+                                        <option value="{{ $lt->id }}">{{ $lt->Ten }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+
+
+
                             <div class="form-group">
                                 <p><label>Tên Thể Loại</label></p>
                                 <input class="form-control input-width" name="cate_name" placeholder="Nhập tên Thể Loại.." />
@@ -44,4 +66,13 @@
             </div>
             <!-- /.container-fluid -->
         </div>
+@endsection
+
+
+@section('script')
+   <script>
+       $(document).ready(function(){
+            alert('Da chay duoc');
+       })
+   </script> 
 @endsection

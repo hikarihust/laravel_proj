@@ -16,7 +16,9 @@ class TinTucController extends Controller
 	}
 
 	public function getThem(){
-
+		$theloai = TheLoai::all();
+		$loaitin = LoaiTin::all();
+		return view('admin.tintuc.them', ['theloai'=>$theloai, 'loaitin'=>$loaitin]);	
 	}
 
 	public function postThem(Request $request){

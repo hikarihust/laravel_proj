@@ -78,6 +78,8 @@ Route::group(['prefix' => 'admin'],function(){
 
 		Route::get('them','TinTucController@getThem');
 
+		Route::post('them','TinTucController@postThem');
+
 	});
 
 	// Route group User
