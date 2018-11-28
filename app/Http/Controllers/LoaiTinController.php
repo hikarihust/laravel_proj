@@ -43,11 +43,31 @@ class LoaiTinController extends Controller
 	}
 
 	public function getSua($id){
-
+		$theloai = TheLoai::all();
+		$loaitin = LoaiTin::find($id);
+		return view('admin.loaitin.sua', ['loaitin'=>$loaitin, 'theloai'=>$theloai]);
 	}
 
 	public function postSua(Request $request, $id){
+		$this->validate($request, 
+			[
+				'Ten'=>'required|unique:LoaiTin,Ten|min:3|max:100',
+				'TheLoai'=>'required'
+			], 
+			[
+				'Ten.required'=>'Bạn chưa nhập tên Loại Tin!',
+				'Ten.unique'=>'Tên Loại Tin đã tồn tại, vui lòng nhập tên khác!',
+				'Ten.min'=>'Tên Loại Tin gồm ít nhất 3 ký tự!',
+				'Ten.max'=>'Tên Loại Tin gồm tối đa 100 ký tự!',
+				'TheLoai.required'=>'Vui lòng chọn Thể Loại!'
+			]);
+		$loaitin = LoaiTin::find($id);
+		$loaitin->Ten = $request->Ten;
+		$loaitin->TenKhongDau = $this->changeTitle($request->Ten);
+		$loaitin->idTheLoai = $request->TheLoai;
+		$loaitin->save();
 
+		return redirect('admin/loaitin/sua/'.$id)->with('thongbao','Sửa Loại Tin thành công!');
 	}
 
 	public function getXoa($id){
