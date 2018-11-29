@@ -111,4 +111,9 @@ Route::group(['prefix' => 'admin'],function(){
 
 	});
 
+	// Route group Ajax
+	Route::group(['prefix'=>'ajax'], function(){
+		Route::get('loaitin/{idTheLoai}','AjaxController@getLoaiTin');
+	});
+
 });

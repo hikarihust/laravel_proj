@@ -33,7 +33,7 @@
 
                             <div class="form-group">
                                 <p><label>Thể Loại</label></p>
-                                <select class="form-control input-width" name="TheLoai">
+                                <select class="form-control input-width" name="TheLoai" id="TheLoai">
                                     @foreach($theloai as $tl)
                                         <option value="{{ $tl->id }}">{{ $tl->Ten }}</option>
                                     @endforeach
@@ -41,7 +41,7 @@
                             </div>
                             <div class="form-group">
                                 <p><label>Loại tin</label></p>
-                                <select class="form-control input-width" name="LoaiTin">
+                                <select class="form-control input-width" name="LoaiTin" id="LoaiTin">
                                     @foreach($loaitin as $lt)
                                         <option value="{{ $lt->id }}">{{ $lt->Ten }}</option>
                                     @endforeach
@@ -68,11 +68,15 @@
         </div>
 @endsection
 
-
 @section('script')
    <script>
        $(document).ready(function(){
-            alert('Da chay duoc');
+            $('#TheLoai').change(function(){
+                var idTheLoai = $(this).val();
+                $.get("admin/ajax/loaitin/"+idTheLoai,function(data){
+                    $("#LoaiTin").html(data);
+                });
+            });
        })
    </script> 
 @endsection
