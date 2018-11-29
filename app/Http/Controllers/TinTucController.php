@@ -37,6 +37,36 @@ class TinTucController extends Controller
 				'TomTat.required'=>'Bạn chưa nhập tóm tắt',
 				'NoiDung.required'=>'Bạn chưa nhập nội dung'
 			]);
+		$tintuc = new TinTuc;
+		$tintuc->TieuDe = $request->TieuDe;
+		$tintuc->TieuDeKhongDau = $this->changeTitle($request->TieuDe);
+		$tintuc->idLoaiTin = $request->LoaiTin;
+		$tintuc->TomTat = $request->TomTat;
+		$tintuc->NoiDung = $request->NoiDung;
+		$tintuc->SoLuotXem = 0;
+
+    	if($request->hasFile('Hinh')) // Kiểm tra xem người dùng có upload hình hay không
+    	{
+    		$file = $request->file('Hinh');  // Nhận file hình ảnh người dùng upload lên server
+    		$duoi = $file->getClientOriginalExtension();
+    		if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg') {
+    			return redirect("admin/tintuc/them")->with("loi", "Bạn chỉ được chọn file có đuôi jpg, png, jpeg");
+    		}
+    		$name = $file->getClientOriginalName();  // Lấy tên của file hình ảnh
+    		$Hinh = str_random(4)."_".$name;
+    		while (file_exists("public/upload/tintuc/".$Hinh)) {
+    			$Hinh = str_random(4)."_".$name;
+    		}
+    		$file->move("public/upload/tintuc",$Hinh);
+    		$tintuc->Hinh = $Hinh;
+    	}
+    	else{
+			$tintuc->Hinh = ''; // Nếu người dùng không upload hình thì sẽ gán đường dẫn là rỗng
+    	}
+
+    	$tintuc->save();
+
+    	return redirect("admin/tintuc/them")->with("thongbao", "Thêm tin thành công");
 	}
 
 	public function getSua($id){

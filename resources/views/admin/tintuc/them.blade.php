@@ -25,6 +25,12 @@
                         <strong>{{session('thongbao')}}</strong>
                     </div>
                 @endif
+                <!-- Thông báo lỗi đuôi upload file -->
+                @if(session('loi'))
+                    <div class="alert alert-danger">
+                        <strong>{{session('loi')}}</strong>
+                    </div>
+                @endif
                 <form action="admin/tintuc/them" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
@@ -45,10 +51,6 @@
                     </div>
                     <div class="form-group">
                         <p><label>Tiêu đề</label></p>
-                        <input class="form-control input-width" name="TieuDe" placeholder="Nhập tiêu đề.." />
-                    </div>
-                    <div class="form-group">
-                        <p><label>Tóm tắt </label></p>
                         <input class="form-control input-width" name="TieuDe" placeholder="Nhập tiêu đề.." />
                     </div>
                     <div class="form-group">
