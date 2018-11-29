@@ -22,7 +22,21 @@ class TinTucController extends Controller
 	}
 
 	public function postThem(Request $request){
-
+		$this->validate($request, 
+			[
+				'LoaiTin'=>'required',
+				'TieuDe'=>'required|min:3|unique:TinTuc,TieuDe',
+				'TomTat'=>'required',
+				'NoiDung'=>'required',
+			],
+			[
+				'LoaiTin.required'=>'Bạn chưa chọn loại tin',
+				'TieuDe.required'=>'Bạn chưa nhập tiêu đề',
+				'TieuDe.min'=>'Tiêu đề phải có ít nhất 3 ký tự',
+				'TieuDe.unique'=>'Tiêu đề đã tồn tại',
+				'TomTat.required'=>'Bạn chưa nhập tóm tắt',
+				'NoiDung.required'=>'Bạn chưa nhập nội dung'
+			]);
 	}
 
 	public function getSua($id){
