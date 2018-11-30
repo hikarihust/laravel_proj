@@ -94,9 +94,8 @@ Route::group(['prefix' => 'admin'],function(){
 
 	// Route group Comment
 	Route::group(['prefix' => 'comment'],function(){
-		Route::get('danhsach','CommentController@getDanhSach');
 
-		Route::get('xoa','CommentController@Xoa');
+		Route::get('xoa/{id}/{idTinTuc}','CommentController@getXoa');
 	});
 
 	// Route group Slide
