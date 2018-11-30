@@ -70,15 +70,62 @@ class TinTucController extends Controller
 	}
 
 	public function getSua($id){
-
+		$tintuc = TinTuc::find($id);
+		$theloai = TheLoai::all();
+		$loaitin = LoaiTin::all();
+		return view('admin.tintuc.sua', ['tintuc'=>$tintuc, 'theloai'=>$theloai, 'loaitin'=>$loaitin]);
 	}
 
 	public function postSua(Request $request, $id){
+		$tintuc = TinTuc::find($id);
+		$this->validate($request, 
+			[
+				'LoaiTin'=>'required',
+				'TieuDe'=>'required|min:3|unique:TinTuc,TieuDe',
+				'TomTat'=>'required',
+				'NoiDung'=>'required',
+			],
+			[
+				'LoaiTin.required'=>'Bạn chưa chọn loại tin',
+				'TieuDe.required'=>'Bạn chưa nhập tiêu đề',
+				'TieuDe.min'=>'Tiêu đề phải có ít nhất 3 ký tự',
+				'TieuDe.unique'=>'Tiêu đề đã tồn tại',
+				'TomTat.required'=>'Bạn chưa nhập tóm tắt',
+				'NoiDung.required'=>'Bạn chưa nhập nội dung'
+			]);
+		$tintuc->TieuDe = $request->TieuDe;
+		$tintuc->TieuDeKhongDau = $this->changeTitle($request->TieuDe);
+		$tintuc->idLoaiTin = $request->LoaiTin;
+		$tintuc->TomTat = $request->TomTat;
+		$tintuc->NoiDung = $request->NoiDung;
 
+    	if($request->hasFile('Hinh')) // Kiểm tra xem người dùng có upload hình hay không
+    	{
+    		$file = $request->file('Hinh');  // Nhận file hình ảnh người dùng upload lên server
+    		$duoi = $file->getClientOriginalExtension();
+    		if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg') {
+    			return redirect("admin/tintuc/them")->with("loi", "Bạn chỉ được chọn file có đuôi jpg, png, jpeg");
+    		}
+    		$name = $file->getClientOriginalName();  // Lấy tên của file hình ảnh
+    		$Hinh = str_random(4)."_".$name;
+    		while (file_exists("public/upload/tintuc/".$Hinh)) {
+    			$Hinh = str_random(4)."_".$name;
+    		}
+
+    		$file->move("public/upload/tintuc",$Hinh);
+    		unlink("public/upload/tintuc/".$tintuc->Hinh);
+    		$tintuc->Hinh = $Hinh;
+    	}
+
+    	$tintuc->save();
+    	return redirect('admin/tintuc/sua/'.$id)->with('thongbao', 'Sửa thành công');
 	}
 
 	public function getXoa($id){
+		$tintuc = TinTuc::find($id);
+		$tintuc->delete();
 
+		return redirect('admin/tintuc/danhsach')->with('thongbao', 'Xóa thành công');
 	}
 
 	private function changeTitle($str,$strSymbol='-',$case=MB_CASE_LOWER){// MB_CASE_UPPER / MB_CASE_TITLE / MB_CASE_LOWER

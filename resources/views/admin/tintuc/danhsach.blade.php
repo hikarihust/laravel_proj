@@ -12,12 +12,11 @@
             </div>
             <!-- /.col-lg-12 -->
             <div class="clearfix"></div>
-
-
-
-
-
-
+            @if(session('thongbao'))
+                <div class="alert alert-success">
+                    <strong>{{ session('thongbao') }}</strong>
+                </div>
+            @endif
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                     <tr align="center">
