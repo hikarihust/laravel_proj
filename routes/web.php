@@ -103,9 +103,13 @@ Route::group(['prefix' => 'admin'],function(){
 		// Route URL: admin/slide/danhsach
 		Route::get('danhsach','SlideController@getDanhSach');
 
-		Route::get('sua','SlideController@getSua');
+		Route::get('sua/{id}','SlideController@getSua');
+		Route::post('sua/{id}','SlideController@postSua');
 
 		Route::get('them','SlideController@getThem');
+		Route::post('them','SlideController@postThem');
+
+		Route::get('xoa/{id}', 'SlideController@getXoa');
 
 	});
 
