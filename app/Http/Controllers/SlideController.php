@@ -58,15 +58,54 @@ class SlideController extends Controller
 	}
 
 	public function getSua($id){
-
+		$slide = Slide::find($id);
+		return view('admin.slide.sua', ['slide'=>$slide]);
 	}
 
 	public function postSua(Request $request, $id){
+		$this->validate($request,
+			[
+				'Ten'=>'required',
+				'NoiDung'=>'required',
+			],
+			[
+				'Ten.required'=>'Bạn chưa nhập tên',
+				'NoiDung.required'=>'Bạn chưa nhập nội dung'
+			]
+		);
 
+		$slide = Slide::find($id);
+		$slide->Ten = $request->Ten;
+		$slide->NoiDung = $request->NoiDung;
+		if ($request->has('link')) {
+			$slide->link = $request->link;
+		}
+
+    	if($request->hasFile('Hinh')) // Kiểm tra xem người dùng có upload hình hay không
+    	{
+    		$file = $request->file('Hinh');  // Nhận file hình ảnh người dùng upload lên server
+    		$duoi = $file->getClientOriginalExtension();
+    		if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg') {
+    			return redirect("admin/slide/them")->with("loi", "Bạn chỉ được chọn file có đuôi jpg, png, jpeg");
+    		}
+    		$name = $file->getClientOriginalName();  // Lấy tên của file hình ảnh
+    		$Hinh = str_random(4)."_".$name;
+    		while (file_exists("public/upload/slide/".$Hinh)) {
+    			$Hinh = str_random(4)."_".$name;
+    		}
+    		unlink("public/upload/slide/".$slide->Hinh);
+    		$file->move("public/upload/slide",$Hinh);
+    		$slide->Hinh = $Hinh;
+    	}
+    	$slide->save();
+    	return redirect('admin/slide/sua/'.$id)->with('thongbao','Sửa thành công');
 	}
 
 	public function getXoa($id){
+		$slide = Slide::find($id);
+		$slide->delete();
 
+		return redirect('admin/slide/danhsach')->with('thongbao', 'Xóa thành công');
 	}
 
 	private function changeTitle($str,$strSymbol='-',$case=MB_CASE_LOWER){// MB_CASE_UPPER / MB_CASE_TITLE / MB_CASE_LOWER
