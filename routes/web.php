@@ -80,18 +80,6 @@ Route::group(['prefix' => 'admin'],function(){
 
 	});
 
-	// Route group User
-	Route::group(['prefix' => 'user'],function(){
-		// Route URL: admin/user/danhsach
-		Route::get('danhsach','UserController@getDanhSach');
-
-		Route::get('sua','UserController@getSua');
-		Route::post('sua','UserController@postSua');
-
-		Route::get('them','UserController@getThem');
-
-	});
-
 	// Route group Comment
 	Route::group(['prefix' => 'comment'],function(){
 
@@ -112,6 +100,22 @@ Route::group(['prefix' => 'admin'],function(){
 		Route::get('xoa/{id}', 'SlideController@getXoa');
 
 	});
+
+	// Route group User
+	Route::group(['prefix' => 'user'],function(){
+		// Route URL: admin/user/danhsach
+		Route::get('danhsach','UserController@getDanhSach');
+
+		Route::get('sua/{id}','UserController@getSua');
+		Route::post('sua/{id}','UserController@postSua');
+
+		Route::get('them','UserController@getThem');
+		Route::post('them','UserController@postThem');
+
+		Route::get('xoa/{id}', 'UserController@getXoa');
+
+	});
+
 
 	// Route group Ajax
 	Route::group(['prefix'=>'ajax'], function(){
