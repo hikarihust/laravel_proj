@@ -35,7 +35,7 @@ Route::post('admin/dangnhap', 'UserController@postDangnhapAdmin');
 Route::get('admin/logout', 'UserController@getDangXuatAdmin');
 
 
-Route::group(['prefix' => 'admin'],function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'],function(){
 
 	// Route group The Loai
 	Route::group(['prefix' => 'theloai'],function(){
@@ -122,5 +122,4 @@ Route::group(['prefix' => 'admin'],function(){
 	Route::group(['prefix'=>'ajax'], function(){
 		Route::get('loaitin/{idTheLoai}','AjaxController@getLoaiTin');
 	});
-
 });
