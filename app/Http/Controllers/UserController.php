@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -94,6 +95,36 @@ class UserController extends Controller
 		$user->delete();
 
 		return redirect('admin/user/danhsach')->with('thongbao','Xóa người dùng thành công');
+	}
+
+	public function getDangnhapAdmin(){
+		return view('admin.login');
+	}
+
+	public function postDangnhapAdmin(Request $request){
+		$this->validate($request,
+			[
+				'email'=>'required',
+				'password'=>'required|min:3|max:32'
+			],
+			[
+				'email.required'=>'Bạn chưa nhập Email',
+				'password.required'=>'Bạn chưa nhập password',
+				'password.min'=>'Password không được dưới 3 ký tự',
+				'password.max'=>'Password không được nhiều hơn 32 ký tự'
+			]
+		);
+
+		if (Auth::attempt(['email'=>$request->email, 'password'=>$request->password])) {
+			return redirect('admin/theloai/danhsach');
+		}else{
+			return redirect('admin/dangnhap')->with('thongbao', 'Đăng nhập không thành công');
+		}
+	}
+
+	public function getDangXuatAdmin(){
+		Auth::logout();
+		return redirect('admin/dangnhap');
 	}
 
 	private function changeTitle($str,$strSymbol='-',$case=MB_CASE_LOWER){// MB_CASE_UPPER / MB_CASE_TITLE / MB_CASE_LOWER

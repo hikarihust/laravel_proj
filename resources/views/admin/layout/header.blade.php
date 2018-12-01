@@ -9,11 +9,10 @@
         <a class="navbar-brand" href="admin/home"><span class="font-title">Trang Quản Trị</span></a>
     </div>
     <!-- /.navbar-header -->
-
     <ul class="nav navbar-top-links navbar-right">
         <!-- /.dropdown -->
         <li class="dropdown">
-<!--             @if(Auth::user())
+            @if(Auth::user())
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-user fa-fw"></i>
                 <span class="usr-name">{{ Auth::user()->name }}</span>  
@@ -26,13 +25,12 @@
                 <li><a href="admin/logout"><i class="fa fa-sign-out fa-fw"></i> Đăng Xuất</a>
                 </li>
             </ul>
-            @endif -->
+            @endif
             <!-- /.dropdown-user -->
         </li>
         <!-- /.dropdown -->
     </ul>
     <!-- /.navbar-top-links -->
-
     <!-- Menu -->
     @include('admin.layout.menu')
     <!-- End Menu -->

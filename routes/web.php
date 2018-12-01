@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// ------------------ Test Laravel --------------------
 Route::get('thu', function () {
     $theloai = TheLoai::find(1);
     foreach ($theloai->loaitin as $loaitin) {
@@ -27,10 +28,11 @@ Route::get('thu', function () {
 Route::get('thuAdminView', function () {
     return view('admin.theloai.sua');
 });
+// -----------------------------------------------------
 
-
-
-
+Route::get('admin/dangnhap', 'UserController@getDangnhapAdmin');
+Route::post('admin/dangnhap', 'UserController@postDangnhapAdmin');
+Route::get('admin/logout', 'UserController@getDangXuatAdmin');
 
 
 Route::group(['prefix' => 'admin'],function(){
@@ -115,7 +117,6 @@ Route::group(['prefix' => 'admin'],function(){
 		Route::get('xoa/{id}', 'UserController@getXoa');
 
 	});
-
 
 	// Route group Ajax
 	Route::group(['prefix'=>'ajax'], function(){
