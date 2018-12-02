@@ -14,7 +14,7 @@
 
 
         <div class="row main-left">
-      
+            @include('layout.menu')
 
 
 
