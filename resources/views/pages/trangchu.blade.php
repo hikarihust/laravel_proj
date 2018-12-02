@@ -8,10 +8,9 @@
 <!-- Page Content -->
     <div class="container">
 
-     
+        @include('layout.slide')
 
         <div class="space20"></div>
-
 
         <div class="row main-left">
             @include('layout.menu')
