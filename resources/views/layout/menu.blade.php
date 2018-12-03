@@ -11,7 +11,7 @@
                 <ul style="display: none;" class="level2">
                     @foreach($tl->LoaiTin as $lt)
                         <li class="list-group-item">
-                            <a href="#"> {{$lt->Ten}}</a>
+                            <a href="loaitin/{{$lt->id}}/{{$lt->TenKhongDau}}.html"> {{$lt->Ten}}</a>
                         </li>
                     @endforeach
                 </ul>
