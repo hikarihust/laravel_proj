@@ -4,7 +4,7 @@
             Menu
         </li>
         @foreach($theloai as $tl)
-            @if(count($tl->LoaiTin) > 0)
+            @if((count($tl->LoaiTin) > 0) && (count($tl->TinTuc) > 0))
                 <li class="list-group-item menu1 cate-list">
                     {{$tl->Ten}}
                 </li>
@@ -19,3 +19,13 @@
         @endforeach
     </ul>
 </div>
+
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $('.cate-list').click(function(){
+                $(this).next('.level2').toggle("slow");
+            });
+        }) 
+    </script>
+@endsection

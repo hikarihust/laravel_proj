@@ -44,21 +44,7 @@
     
     @include('layout.footer')
     
-
     @yield('script')
-
-
-
-
-    <script>
-        $(document).ready(function(){
-            $('.cate-list').click(function(){
-                $(this).next('.level2').toggle("slow");
-            });
-        }) 
-    </script>
-
-
 
 </body>
 
