@@ -70,7 +70,7 @@
 
 			<!-- Posted Comments -->
 
-			foreach($tintuc->Comment as $binhluan)
+			@foreach($tintuc->Comment as $cm)
 				<!-- Comment -->
 				<div class="media">
 					<a class="pull-left" href="#">
@@ -78,13 +78,13 @@
 					</a>
 					<div class="media-body">
 						<h4 class="media-heading">
-							 $binhluan->User->name  | 
-							<small> dateTimeFormat($binhluan->created_at) </small>
+							{{$cm->User->name}}  | 
+							<small> {{$cm->created_at}} </small>
 						</h4>
-						 $binhluan->NoiDung 
+							{{$cm->NoiDung}} 
 					</div>
 				</div>
-			endforeach
+			@endforeach
 
 		</div>
 
@@ -94,48 +94,48 @@
 			<div class="panel panel-default">
 				<div class="panel-heading"><b>Tin liên quan</b></div>
 				<div class="panel-body">
-					foreach($tinlienquan as $tlq)
+					@foreach($tinlienquan as $tt)
 						<!-- item -->
 						<div class="row" style="margin-top: 10px;">
 							<div class="col-md-5">
-								<a href="tin-tuc/$tlq->TieuDeKhongDau.html">
-									<img class="img-responsive" src="upload/tintuc/$tlq->Hinh" alt="Hình ảnh của bài viết">
+								<a href="tintuc/{{$tt->id}}/{{$tt->TieuDeKhongDau}}.html">
+									<img class="img-responsive" src="public/upload/tintuc/{{$tt->Hinh}}" alt="">
 								</a>
 							</div>
 							<div class="col-md-7">
-								<a href="tin-tuc/$tlq->TieuDeKhongDau.html"><b> $tlq->TieuDe </b></a>
+								<a href="#"><b> {{$tt->TieuDe}} </b></a>
 							</div>
 							<p class="sum-p">
-								 $tlq->TomTat 
+								{{$tt->TomTat}} 
 							</p>
 							<div class="break"></div>
 						</div>
 						<!-- end item -->
-					endforeach
+					@endforeach
 				</div>
 			</div>
 
 			<div class="panel panel-default">
 				<div class="panel-heading"><b>Tin nổi bật</b></div>
 				<div class="panel-body">
-					foreach($tinnoibat as $tnb)
+					@foreach($tinnoibat as $tt)
 						<!-- item -->
 						<div class="row" style="margin-top: 10px;">
 							<div class="col-md-5">
-								<a href="tin-tuc/$tnb->TieuDeKhongDau .html">
-									<img class="img-responsive" src="upload/tintuc/$tnb->Hinh" alt="Hình ảnh của bài viết">
+								<a href="tintuc/{{$tt->id}}/{{$tt->TieuDeKhongDau}}.html">
+									<img class="img-responsive" src="public/upload/tintuc/{{$tt->Hinh}}" alt="">
 								</a>
 							</div>
 							<div class="col-md-7">
-								<a href="tin-tuc/$tnb->TieuDeKhongDau.html"><b>$tnb->TieuDe </b></a>
+								<a href="#"><b> {{$tt->TieuDe}} </b></a>
 							</div>
 							<p class="sum-p">
-								 $tnb->TomTat 
+								{{$tt->TomTat}} 
 							</p>
 							<div class="break"></div>
 						</div>
 						<!-- end item -->
-					endforeach
+					@endforeach
 					
 				</div>
 			</div>
