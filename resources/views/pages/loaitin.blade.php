@@ -1,5 +1,5 @@
 @section('title')
-    $loaitin->Ten 
+    {{ $loaitin->Ten }}
 @endsection
 
 @extends('layout.index')
