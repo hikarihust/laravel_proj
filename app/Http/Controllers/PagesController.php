@@ -73,5 +73,14 @@ class PagesController extends Controller
     public function getDangxuat(){
         Auth::logout();
         return redirect('trangchu');
-    }    
+    }  
+
+    public function getNguoidung(){
+        $user = Auth::user();
+        return view('pages.nguoidung', ['nguoidung'=>$user]);
+    }  
+
+    public function postNguoidung(){
+
+    }
 }

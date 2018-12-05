@@ -15,10 +15,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Giới thiệu</a>
+                        <a href="gioithieu">Giới thiệu</a>
                     </li>
                     <li>
-                        <a href="lien-he">Liên hệ</a>
+                        <a href="lienhe">Liên hệ</a>
                     </li>
                 </ul>
 
@@ -30,13 +30,10 @@
                     <button type="submit" class="btn btn-default">Tìm Kiếm</button>
                 </form>
 
-
-
-
                 <ul class="nav navbar-nav pull-right">
                     @if(Auth::user())
                         <li>
-                            <a href="#">
+                            <a href="nguoidung">
                                 <span class="glyphicon glyphicon-user" style="word-spacing: -10px;">{{Auth::user()->name}}</span>
                             </a>
                         </li>
@@ -54,10 +51,6 @@
                         </li>
                     @endif
                 </ul>
-
-
-
-
             </div>
             <!-- /.navbar-collapse -->
         </div>
