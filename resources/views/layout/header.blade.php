@@ -33,14 +33,32 @@
 
 
 
+                <ul class="nav navbar-nav pull-right">
+                    @if(Auth::user())
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-user" style="word-spacing: -10px;">{{Auth::user()->name}}</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="dangxuat">Dang xuat</a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="dangky"> Dang ky</a>
+                        </li>
+
+                        <li>
+                            <a href="dangnhap"> Dang nhap</a>
+                        </li>
+                    @endif
+                </ul>
 
 
 
 
             </div>
-
-
-            
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->

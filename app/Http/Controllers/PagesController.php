@@ -63,11 +63,15 @@ class PagesController extends Controller
                 'password.max'=>'Password không được nhiều hơn 32 ký tự'
             ]
         );
-
         if (Auth::attempt(['email'=>$request->email, 'password'=>$request->password])) {
             return redirect('trangchu');
         }else{
             return redirect('dangnhap')->with('thongbao', 'Đăng nhập không thành công');
         }
     }
+
+    public function getDangxuat(){
+        Auth::logout();
+        return redirect('trangchu');
+    }    
 }
