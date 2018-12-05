@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\TinTuc;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -13,6 +15,18 @@ class CommentController extends Controller
 		$loaitin->delete();
 
 		return redirect('admin/tintuc/sua/'.$idTinTuc)->with('xoaComment','Xóa comment thành công!');
+	}
+
+	public function postComment($id, Request $request){
+		$idTinTuc = $id;
+		$tintuc = TinTuc::find($idTinTuc);
+		$comment = new Comment;
+		$comment->idTinTuc = $idTinTuc;
+		$comment->idUser = Auth::user()->id;
+		$comment->NoiDung = $request->NoiDung;
+		$comment->save();
+
+		return redirect("tintuc/$idTinTuc/".$tintuc->TieuDeKhongDau.".html")->with('thongbao', 'Viết bình luận thành công');
 	}
 
 	private function changeTitle($str,$strSymbol='-',$case=MB_CASE_LOWER){// MB_CASE_UPPER / MB_CASE_TITLE / MB_CASE_LOWER

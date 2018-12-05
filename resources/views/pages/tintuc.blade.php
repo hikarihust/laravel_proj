@@ -40,31 +40,31 @@
 			<!-- Blog Comments -->
 
 			<!-- Comments Form -->
-			if(Auth::user())
+			@if(Auth::user())
 				<div class="well">
 					<h4>Viết bình luận ...<span class="glyphicon glyphicon-pencil"></span></h4>
-					if(count($errors) > 0)
-						foreach($errors->all() as $err)
+					@if(count($errors) > 0)
+						@foreach($errors->all() as $err)
 						<div class="alert alert-danger" style="margin-top: 1em;">
 							<strong> $err </strong><br/>
 						</div>
-						endforeach
-					endif
+						@endforeach
+					@endif
 					
-					if(session('message'))
+					@if(session('thongbao'))
 					<div class="alert alert-success">
-						<strong> session('message') </strong>
+						<strong> {{session('thongbao')}} </strong>
 					</div>
-					endif
-					<form role="form" method="POST" action="binh-luan/$tintuc->id">
+					@endif
+					<form action="comment/{{$tintuc->id}}" method="POST">
 						{{ csrf_field() }}
 						<div class="form-group">
-							<textarea name="content" class="form-control" rows="3"></textarea>
+							<textarea name="NoiDung" class="form-control" rows="3"></textarea>
 						</div>
 						<button type="submit" class="btn btn-primary">Gửi</button>
 					</form>
 				</div>
-			endif
+			@endif
 
 			<hr>
 
@@ -90,7 +90,6 @@
 
 		<!-- Blog Sidebar Widgets Column -->
 		<div class="col-md-3">
-
 			<div class="panel panel-default">
 				<div class="panel-heading"><b>Tin liên quan</b></div>
 				<div class="panel-body">
@@ -103,7 +102,7 @@
 								</a>
 							</div>
 							<div class="col-md-7">
-								<a href="#"><b> {{$tt->TieuDe}} </b></a>
+								<a href="tintuc/{{$tt->id}}/{{$tt->TieuDeKhongDau}}.html"><b> {{$tt->TieuDe}} </b></a>
 							</div>
 							<p class="sum-p">
 								{{$tt->TomTat}} 
@@ -127,7 +126,7 @@
 								</a>
 							</div>
 							<div class="col-md-7">
-								<a href="#"><b> {{$tt->TieuDe}} </b></a>
+								<a href="tintuc/{{$tt->id}}/{{$tt->TieuDeKhongDau}}.html"><b> {{$tt->TieuDe}} </b></a>
 							</div>
 							<p class="sum-p">
 								{{$tt->TomTat}} 
