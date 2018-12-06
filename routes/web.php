@@ -139,3 +139,4 @@ Route::post('dangky', 'PagesController@postDangky');
 
 Route::post('comment/{id}', 'CommentController@postComment');
 
+Route::post('timkiem', 'PagesController@timkiem');

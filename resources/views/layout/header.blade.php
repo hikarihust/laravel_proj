@@ -9,25 +9,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="font-size: 1.4em;" href="{{ url('/') }}">tinnhanh.net</a>
+                <a class="navbar-brand" style="font-size: 1.4em;" href="#">tinnhanh.net</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="gioithieu">Giới thiệu</a>
+                        <a href="#">Giới thiệu</a>
                     </li>
                     <li>
                         <a href="lienhe">Liên hệ</a>
                     </li>
                 </ul>
 
-                <form method="GET" action="tim-kiem" class="navbar-form navbar-left" role="search">
+                <form method="post" action="timkiem" class="navbar-form navbar-left" role="search">
                     {{ csrf_field() }}
                     <div class="form-group">
-                      <input type="text" name="keyword" class="form-control" placeholder="Bạn cần tìm gì?">
+                      <input type="text" name="tukhoa" class="form-control" placeholder="Tìm kiếm">
                     </div>
-                    <button type="submit" class="btn btn-default">Tìm Kiếm</button>
+                    <button type="submit" class="btn btn-default">Tìm</button>
                 </form>
 
                 <ul class="nav navbar-nav pull-right">
