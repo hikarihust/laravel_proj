@@ -22,7 +22,7 @@
                     </li>
                 </ul>
 
-                <form method="post" action="timkiem" class="navbar-form navbar-left" role="search">
+                <form method="get" action="timkiem" class="navbar-form navbar-left" role="search">
                     {{ csrf_field() }}
                     <div class="form-group">
                       <input type="text" name="tukhoa" class="form-control" placeholder="Tìm kiếm">

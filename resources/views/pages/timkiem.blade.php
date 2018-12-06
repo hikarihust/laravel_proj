@@ -41,11 +41,11 @@
                 @endforeach
 
                 <!-- Pagination -->
-                <!-- <div class="row text-center"> -->
-                   <!-- {{$tintuc->links()}}  -->
-                <!-- </div> -->
+                <div class="row text-center">
+                   {{$tintuc->links()}} 
+                </div>
                 <!-- /.row -->
-                @include('layout.limit_links', ['tintuc' => $tintuc])
+                <!-- @include('layout.limit_links', ['tintuc' => $tintuc]) -->
             </div>
         </div> 
 
