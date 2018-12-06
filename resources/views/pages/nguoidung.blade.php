@@ -25,12 +25,12 @@
 					</div>
 					@endif
 
-					@if(session('thongtin'))
+					@if(session('thongbao'))
 					<div class="alert alert-success">
-						<strong>{{ session('thongtin') }}</strong>
+						<strong>{{ session('thongbao') }}</strong>
 					</div>
 					@endif
-					<form action="quan-ly-thong-tin" method="POST">
+					<form action="nguoidung" method="POST">
 						{{ csrf_field() }}
 						<div>
 							<label>Họ tên</label>
